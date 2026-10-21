@@ -1,0 +1,13 @@
+{
+    "name": "Pi + ESP32 Dev",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "postCreateCommand": "curl -fsSL https://tailscale.com/install.sh | sh && sudo apt-get update && sudo apt-get install -y netcat-openbsd",
+    "postStartCommand": "sudo nohup tailscaled --tun=userspace-networking --socks5-server=localhost:1055 > /tmp/tailscaled.log 2>&1 &",
+    "customizations": {
+    "vscode": {
+      "extensions": [
+        "platformio.platformio-ide"
+      ]
+    }
+  }
+}
