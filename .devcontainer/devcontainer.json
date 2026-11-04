@@ -3,7 +3,10 @@
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
       "ghcr.io/devcontainers/features/python:1":{},
-      "ghcr.io/devcontainers/features/git-lfs:1":{}
+      "ghcr.io/devcontainers/features/git-lfs:1":{},
+      "ghcr.io/devcontainers/features/node:1":{
+        "version": "lts" //LTS Means Long-Term Support, which means it installs the latest version on Node.js
+      }
     },
     "postCreateCommand": "curl -fsSL https://tailscale.com/install.sh | sh && sudo apt-get update && sudo apt-get install -y netcat-openbsd git-lfs && git lfs install",
     "postStartCommand": "sudo nohup tailscaled --tun=userspace-networking --socks5-server=localhost:1055 > /tmp/tailscaled.log 2>&1 & sleep 3 && sudo tailscale up --authkey=$TS_AUTHKEY --hostname=codespaces",
